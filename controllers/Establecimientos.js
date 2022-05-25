@@ -18,8 +18,8 @@ res.json([
 
 
 const obtenerEstablecimiento = async (req,res = response)=>{
-    const {ESTABLECIMIENTO_NOMBRE} = req.params;
-    const establecimiento = await Establecimiento.find(ESTABLECIMIENTO_NOMBRE).catch((err)=>{res.status(400).json({status:'No es una ID valida', error:err})});
+    const {Estado,...body} = req.body;
+    const establecimiento = await Establecimiento.find({ESTABLECIMIENTO_NOMBRE:body.ESTABLECIMIENTO_NOMBRE}).catch((err)=>{res.status(400).json({status:'No es una ID valida', error:err})});
     res.json(establecimiento);
 }
 

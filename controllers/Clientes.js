@@ -19,8 +19,8 @@ const obtenerClientes = async(req,res = response) =>{
 
 
 const obtenerCliente = async (req,res = response)=>{
-    const {CLIENTE_NOMBRE} = req.params;
-    const cliente = await Cliente.findOne(CLIENTE_NOMBRE).catch((err)=> {res.status(400).json({status: 'No es una ID valida >:c'})});
+    const {Estado,...body} = req.body;
+    const cliente = await Cliente.findOne({CLIENTE_NOMBRE:body.CLIENTE_NOMBRE}).catch((err)=> {res.status(400).json({status: 'No es una ID valida >:c'})});
     res.json(cliente);
 }
 

@@ -18,8 +18,8 @@ res.json([
 
 
 const obtenerCarro = async (req,res = response)=>{
-    const {CARRO_PLACA} = req.params;
-    const carro = await Carro.findOne(CARRO_PLACA).catch((err)=>{res.status(400).json({status:'No es una ID valida >:c', error:err})});
+    const {Estado,...body} = req.body;
+    const carro = await Carro.findOne({CARRO_PLACA:body.CARRO_PLACA}).catch((err)=>{res.status(400).json({status:'No es una ID valida >:c', error:err})});
     res.json(carro);
 }
 

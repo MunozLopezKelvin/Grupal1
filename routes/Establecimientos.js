@@ -11,7 +11,7 @@ const { obtenerEstablecimiento,
 const router = Router();
 
 router.get('/' , obtenerEstablecimientos)
-router.get('/:ESTABLECIMIENTO_NOMBRE', obtenerEstablecimiento)
+router.post('/:ESTABLECIMIENTO_NOMBRE', obtenerEstablecimiento)
 router.post('/', [check('ESTABLECIMIENTO_NOMBRE', 'El nombre es obligatorio').not().isEmpty()], crearEstablecimiento)
 router.put('/:ESTABLECIMIENTO_NOMBRE', actualizarEstablecimiento)
 router.delete('/:ESTABLECIMIENTO_NOMBRE', borrarEstablecimiento)

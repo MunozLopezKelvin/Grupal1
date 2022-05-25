@@ -18,8 +18,8 @@ const obtenerEspacios = async(req,res = response) =>{
 }
 
 const obtenerEspacio = async (req,res = response)=>{
-    const {ESPACIO_ID} = req.params;
-    const espacio = await Espacio.findOne(ESPACIO_ID).catch((err)=> {res.status(400).json({status: 'No es una ID valida'})});
+    const {Estado,...body} = req.body;
+    const espacio = await Espacio.findOne({ESPACIO_ID:body.ESPACIO_ID}).catch((err)=> {res.status(400).json({status: 'No es una ID valida'})});
     res.json(espacio);
 }
 
@@ -34,7 +34,7 @@ const crearEspacio = async (req,res)=>{
             message:`El espacio que intentas registrar ya existe ${EspacioExiste.ESPACIO_ID}`
         })
     }
-    const espacio = new espacio(body);
+    const espacio = new Espacio(body);
     const EspacioNuevo = await espacio.save();
     res.status(201).json(EspacioNuevo);
 }

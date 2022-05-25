@@ -17,8 +17,8 @@ res.json([
 
 
 const obtenerServicio = async (req,res = response)=>{
-    const {SERVICIO_NOMBRE} = req.params;
-    const servicio = await Servicios.findOne(SERVICIO_NOMBRE).catch((err)=>{res.status(400).json({status:'No es una ID valida', error:err})});
+    const {Estado,...body} = req.body;
+    const servicio = await Servicios.findOne({SERVICIO_NOMBRE:body.SERVICIO_NOMBRE}).catch((err)=>{res.status(400).json({status:'No es una ID valida', error:err})});
     res.json(servicio);
 }
 

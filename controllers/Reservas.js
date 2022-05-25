@@ -20,8 +20,8 @@ const obtenerReservas = async(req,res = response) =>{
 
 
 const obtenerReserva = async (req,res = response)=>{
-    const {RESERVACION_ID} = req.params;
-    const reserva = await Reserva.findOne(RESERVACION_ID).catch((err)=> {res.status(400).json({status: 'No es una ID valida >:c'})});
+    const {Estado,...body} = req.body;
+    const reserva = await Reserva.findOne({RESERVACION_ID:body.RESERVACION_ID}).catch((err)=> {res.status(400).json({status: 'No es una ID valida >:c'})});
     res.json(reserva);
 }
 

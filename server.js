@@ -19,7 +19,7 @@ class Server {
         this.conectarBD();
         this.middlewares();
         this.routes();
-        this.router.use('v1/sextoa', this.app);
+        this.router.use('/v1/sextoa', this.app);
         this._express= express().use(this.router)
     }
     async conectarBD(){

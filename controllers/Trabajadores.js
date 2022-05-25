@@ -18,8 +18,8 @@ const obtenerTrabajadores = async(req,res = response) =>{
 }
 
 const obtenerTrabajador = async (req,res = response)=>{
-    const {TRABAJADOR_CEDULA} = req.params;
-    const trabajador = await Trabajador.findOne(TRABAJADOR_CEDULA).catch((err)=> {res.status(400).json({status: 'No es una ID valida'})});
+    const {Estado,...body} = req.body;
+    const trabajador = await Trabajador.findOne({TRABAJADOR_CEDULA:body.TRABAJADOR_CEDULA}).catch((err)=> {res.status(400).json({status: 'No es una ID valida'})});
     res.json(trabajador);
 }
 
