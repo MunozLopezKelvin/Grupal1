@@ -1,22 +1,20 @@
-
+//Paul
 const { Schema, model } = require ('mongoose');
-
-const ClientesSchema = Schema({
-
-    CLIENTE_ID:{
-        type: Number,
-        required: [true,'El ID del cliente es obligatiro'],
+const CarrosSchema = Schema({
+    CARRO_PLACA:{
+        type: String,
+        required: [true,'La placa del vehiculo es obligatiro'],
         unique: true
     },
-    CLIENTE_NOMBRE:{
+    CARRO_MODELO:{
         type: String,
         required: true
     },
-    CLIENTE_CEDULA:{
-        type: String,
+    CARRO_AÑO:{
+        type: Number,
         required: true
     },
-    CLIENTE_TELEFONO:{
+    CARRO_COMENTARIO:{
         type: String,
         required: true
     },
@@ -28,5 +26,6 @@ const ClientesSchema = Schema({
 
 });
 
-module.exports = model('Cliente', ClientesSchema)
+module.exports = model('Carro', CarrosSchema)
+
 

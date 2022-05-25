@@ -1,5 +1,6 @@
-const { Schema, model, default: mongoose } = require ('mongoose');
-const mongoose = require (mongoose);
+//Yudeh
+const mongoose = require ('mongoose');
+const { Schema, model } = require ('mongoose');
 
 const ServiciosSchema = Schema({
     SERVICIO_ID:{

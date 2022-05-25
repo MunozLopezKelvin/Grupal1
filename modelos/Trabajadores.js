@@ -1,5 +1,7 @@
-const { Schema, model, default: mongoose } = require ('mongoose');
-const mongoose = require (mongoose);
+//Jesus
+const mongoose = require ('mongoose');
+const { Schema, model } = require ('mongoose');
+
 
 const TrabajadoresSchema = Schema({
     TRABAJADOR_ID:{

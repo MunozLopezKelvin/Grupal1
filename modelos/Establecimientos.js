@@ -1,6 +1,5 @@
-const { Schema, model, default: mongoose } = require ('mongoose');
-const mongoose = require (mongoose);
-
+//Yudeh
+const { Schema, model } = require ('mongoose');
 const EstablecimientosSchema = Schema({
     ESTABLECIMIENTO_ID:{
         type: Number,
@@ -26,3 +25,5 @@ const EstablecimientosSchema = Schema({
 });
 
 module.exports = model('Establecimiento', EstablecimientosSchema)
+
+

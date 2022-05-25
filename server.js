@@ -8,11 +8,17 @@ class Server {
         this.router = express.Router();
         this.port= process.env.PORT;
         this.paths= {
-            productos:'/api/productos',
+            carros:'/api/carros',
+            clientes:'/api/clientes',
+            espacios:'/api/espacios',
+            establecimientos:'/api/establecimientos',
+            reservas:'/api/reservas',
+            servicios:'/api/servicios',
+            trabajadores:'/api/trabajadores'
         }
         this.conectarBD();
         this.middlewares();
-        //this.routes();
+        this.routes();
         this.router.use('v1/sextoa', this.app);
         this._express= express().use(this.router)
     }
@@ -23,12 +29,18 @@ class Server {
         this.app.use(cors());
         this.app.use(express.json());
     }
-    // routes(){
-    //     this.app.use(this.paths.productos,require('./routes/productos'))
-    // }
+    routes(){
+        this.app.use(this.paths.carros,require('./routes/Carros'))
+        this.app.use(this.paths.clientes,require('./routes/Clientes'))
+        this.app.use(this.paths.espacios,require('./routes/Espacios'))
+        this.app.use(this.paths.establecimientos,require('./routes/Establecimientos'))
+        this.app.use(this.paths.reservas,require('./routes/Reservas'))
+        this.app.use(this.paths.servicios,require('./routes/Servicios'))
+        this.app.use(this.paths.trabajadores,require('./routes/Trabajadores'))
+    }
     listen(){
         this._express.listen(this.port,()=>{
-            console.log(`Servidor corriendo en puerto ${this.port}`)
+            //console.log(`Servidor corriendo en puerto ${this.port}`)
         })
     }
 }

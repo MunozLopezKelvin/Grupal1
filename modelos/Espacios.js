@@ -1,5 +1,5 @@
-const { Schema, model, default: mongoose } = require ('mongoose');
-const mongoose = require (mongoose);
+//Ian
+const { Schema, model } = require ('mongoose');
 
 const EspaciosSchema = Schema({
     ESPACIO_ID:{
@@ -22,3 +22,5 @@ const EspaciosSchema = Schema({
 });
 
 module.exports = model('Espacio', EspaciosSchema)
+
+
