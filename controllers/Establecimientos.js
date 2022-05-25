@@ -5,7 +5,7 @@ const { Establecimiento } = require('../modelos');
 const obtenerEstablecimientos = async (req,res = response)=>{
     const { limite =10, desde=0} = req.query;
     const query = { estado:true };
-    const [total, datos] = await Promise.all()([
+    const [total, datos] = await Promise.all([
         Establecimiento.countDocuments(query),
         Establecimiento.find(query)
     ])

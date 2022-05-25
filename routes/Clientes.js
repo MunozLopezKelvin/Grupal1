@@ -14,7 +14,7 @@ const {
 const router = Router();
 
 router.get('/' , obtenerClientes)
-router.post('/:CLIENTE_NOMBRE', obtenerCliente)
+router.post('/:BUSCAR_CLIENTE', obtenerCliente)
 router.post('/', [check('CLIENTE_NOMBRE', 'La Nombre es obligatorio').not().isEmpty()], crearCliente)
 router.put('/:CLIENTE_NOMBRE', actualizarCliente)
 router.delete('/:CLIENTE_NOMBRE', borrarCliente)

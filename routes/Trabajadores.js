@@ -13,7 +13,7 @@ const {
 const router = Router();
 
 router.get('/' , obtenerTrabajadores)
-router.post('/:TRABAJADOR_CEDULA', obtenerTrabajador)
+router.post('/:BUSCAR_TRABAJADOR', obtenerTrabajador)
 router.post('/', [check('TRABAJADOR_CEDULA', 'El ingreso del id del espacio es obligatorio').not().isEmpty()], crearTrabajador)
 router.put('/:TRABAJADOR_CEDULA',  actualizarTrabajador)
 router.delete('/:TRABAJADOR_CEDULA', borrarTrabajador)

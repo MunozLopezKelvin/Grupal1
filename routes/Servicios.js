@@ -11,7 +11,7 @@ const { obtenerServicio,
 const router = Router();
 
 router.get('/' , obtenerServicios)
-router.post('/:SERVICIO_NOMBRE', obtenerServicio)
+router.post('/:BUSCAR_SERVICIO', obtenerServicio)
 router.post('/', [check('SERVICIO_NOMBRE', 'El nombre es obligatorio').not().isEmpty()], crearServicio)
 router.put('/:SERVICIO_ID', actualizarServicio)
 router.delete('/:SERVICIO_ID', borrarServicio)

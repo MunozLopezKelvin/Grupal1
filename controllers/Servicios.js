@@ -5,9 +5,9 @@ const { Servicio } = require('../modelos');
 const obtenerServicios = async (req,res = response)=>{
     const { limite =10, desde=0} = req.query;
     const query = { estado:true };
-    const [total, datos] = await Promise.all()([
-        Servicios.countDocuments(query),
-        Servicios.find(query)
+    const [total, datos] = await Promise.all([
+        Servicio.countDocuments(query),
+        Servicio.find(query)
     ])
 res.json([
     total,
@@ -18,7 +18,7 @@ res.json([
 
 const obtenerServicio = async (req,res = response)=>{
     const {Estado,...body} = req.body;
-    const servicio = await Servicios.findOne({SERVICIO_NOMBRE:body.SERVICIO_NOMBRE}).catch((err)=>{res.status(400).json({status:'No es una ID valida', error:err})});
+    const servicio = await Servicio.findOne({SERVICIO_NOMBRE:body.SERVICIO_NOMBRE}).catch((err)=>{res.status(400).json({status:'No es una ID valida', error:err})});
     res.json(servicio);
 }
 
@@ -41,14 +41,14 @@ const crearServicio = async (req,res)=>{
 const actualizarServicio = async (req,res)=>{
     const {SERVICIO_ID} = req.params;
     const {Estado, ...data} = req.body;
-    const ServicioModificado = await Servicios.findByIdAndUpdate(SERVICIO_ID, data, { new:true }).catch((err)=>{res.status(400).json({status: 'No es una ID valida >:c'})});
+    const ServicioModificado = await Servicio.findByIdAndUpdate(SERVICIO_ID, data, { new:true }).catch((err)=>{res.status(400).json({status: 'No es una ID valida >:c'})});
     res.json(ServicioModificado);
 }
 
 
 const borrarServicio = async (req,res)=>{
     const {SERVICIO_ID} = req.params;
-    const ServicioBorrado = await Servicios.findByIdAndUpdate(SERVICIO_ID, {Estado:false}, {new:true}).catch((err)=>{res.status(400).json({status: 'No es una ID valida >:c'})});
+    const ServicioBorrado = await Servicio.findByIdAndUpdate(SERVICIO_ID, {Estado:false}, {new:true}).catch((err)=>{res.status(400).json({status: 'No es una ID valida >:c'})});
     res.json(ServicioBorrado);
 }
 

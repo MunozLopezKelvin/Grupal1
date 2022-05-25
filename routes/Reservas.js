@@ -15,7 +15,7 @@ const {
 const router = Router();
 
 router.get('/' , obtenerReservas)
-router.post('/:RESERVACION_ID', obtenerReserva)
+router.post('/:BUSCAR_RESERVACION', obtenerReserva)
 router.post('/', [check('RESERVACION_ID', 'La Nombre es obligatorio').not().isEmpty()], crearReserva)
 router.put('/:RESERVACION_ID', actualizarReserva)
 router.delete('/:RESERVACION_ID', borrarReserva)
