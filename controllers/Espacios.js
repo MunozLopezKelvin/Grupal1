@@ -27,7 +27,7 @@ const obtenerEspacio = async (req,res = response)=>{
 const crearEspacio = async (req,res)=>{
     const {Estado, ...body} = req.body;
 
-    const EspacioExiste = await Espacio.findOne({ESPACIO_ID:body.ESPACIO_ID});
+    const EspacioExiste = await Espacio.findOne({ESPACIO_ID:body.ESPACIO_ID}).catch((err)=> {res.status(400).json({status: 'No es una ID valida'})});
 
     if (EspacioExiste){
         res.status(400).json({
@@ -44,14 +44,14 @@ const actualizarEspacio = async (req,res)=>{
     const {ESPACIO_ID} = req.params;
     const {Estado, ...data} = req.body;
     const EspacioModificado = 
-    await Espacio.findByIdAndUpdate(ESPACIO_ID, data, { new:true });
+    await Espacio.findOneAndUpdate(ESPACIO_ID, data, { new:true }).catch((err)=> {res.status(400).json({status: 'No es una ID valida'})});
     res.json(EspacioModificado);
 }
 
 
 const borrarEspacio = async (req,res)=>{
     const { ESPACIO_ID } = req.params;
-    const EspacioBorrado = await Espacio.indOneAndUpdate(ESPACIO_ID, {Estado:false}, {new:true});
+    const EspacioBorrado = await Espacio.findOneAndUpdate(ESPACIO_ID, {Estado:false}, {new:true}).catch((err)=> {res.status(400).json({status: 'No es una ID valida'})});
     res.json(EspacioBorrado);
 }
 

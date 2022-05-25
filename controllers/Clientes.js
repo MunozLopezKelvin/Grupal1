@@ -29,7 +29,7 @@ const crearCliente = async (req,res)=>{
     const {Estado, ...body} = req.body;
 
     const ClienteExiste = await Cliente.findOne({
-        CLIENTE_NOMBRE:body.CLIENTE_NOMBRE});
+        CLIENTE_NOMBRE:body.CLIENTE_NOMBRE}).catch((err)=> {res.status(400).json({status: 'No es una ID valida >:c'})});
 
     if (ClienteExiste){
         res.status(400).json({
@@ -52,7 +52,7 @@ const actualizarCliente = async (req,res)=>{
 
 const borrarCliente = async (req,res)=>{
     const { CLIENTE_NOMBRE } = req.params;
-    const ClienteBorrado = await Cliente.findOneAndUpdate(CLIENTE_NOMBRE, {estado:false}, {new:true});
+    const ClienteBorrado = await Cliente.findOneAndUpdate(CLIENTE_NOMBRE, {estado:false}, {new:true}).catch((err)=> {res.status(400).json({status: 'No es una ID valida >:c'})});
     res.json(ClienteBorrado);
 }
 

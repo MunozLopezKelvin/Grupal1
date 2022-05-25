@@ -15,7 +15,7 @@ const {
 
 
 router.get('/' , obtenerEspacios)
-router.post('/:ESPACIO_ID', obtenerEspacio)
+router.post('/:BUSCAR_ESPACIO', obtenerEspacio)
 router.post('/', crearEspacio)
 router.put('/:ESPACIO_ID',  actualizarEspacio)
 router.delete('/:ESPACIO_ID', borrarEspacio)

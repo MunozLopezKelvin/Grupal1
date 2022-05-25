@@ -19,7 +19,7 @@ res.json([
 
 const obtenerEstablecimiento = async (req,res = response)=>{
     const {Estado,...body} = req.body;
-    const establecimiento = await Establecimiento.find({ESTABLECIMIENTO_NOMBRE:body.ESTABLECIMIENTO_NOMBRE}).catch((err)=>{res.status(400).json({status:'No es una ID valida', error:err})});
+    const establecimiento = await Establecimiento.findOne({ESTABLECIMIENTO_NOMBRE:body.ESTABLECIMIENTO_NOMBRE}).catch((err)=>{res.status(400).json({status:'No es una ID valida', error:err})});
     res.json(establecimiento);
 }
 
@@ -27,7 +27,7 @@ const obtenerEstablecimiento = async (req,res = response)=>{
 const crearEstablecimiento = async (req,res)=>{
     const {Estado, ...body} = req.body;
 
-    const EstablecimientoExiste = await Establecimiento.find({ESTABLECIMIENTO_NOMBRE:body.ESTABLECIMIENTO_NOMBRE});
+    const EstablecimientoExiste = await Establecimiento.findOne({ESTABLECIMIENTO_NOMBRE:body.ESTABLECIMIENTO_NOMBRE});
 
     if (EstablecimientoExiste){
         res.status(400).json({
